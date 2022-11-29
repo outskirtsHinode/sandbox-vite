@@ -6,6 +6,6 @@ export default defineConfig({
   assetsInclude: ['**/*.mov'],
   plugins: [vue()],
   build: {
-    outDir: './doc'
+    outDir: './docs'
   }
 })
