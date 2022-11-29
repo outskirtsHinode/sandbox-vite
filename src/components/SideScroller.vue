@@ -4,18 +4,18 @@ import gsap from 'gsap'
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger)
 
-const hoge = ref(null);
+const hoge = ref<HTMLElement|null>(null);
 
 onMounted(() => {
   gsap.to(
     hoge.value,
     {
-      x: hoge.value.offsetWidth * -1,
+      x: hoge.value!.offsetWidth * -1,
       scrollTrigger: {
         trigger: hoge.value,
         scrub: true,
         pin: true,
-        end: () => "+=" + hoge.value.offsetWidth
+        end: () => "+=" + hoge.value!.offsetWidth
       }
     }
   );

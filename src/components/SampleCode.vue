@@ -1,15 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import Prism from 'prismjs'
-import Normalizer from 'prismjs/plugins/normalize-whitespace/prism-normalize-whitespace'
+import 'prismjs/plugins/normalize-whitespace/prism-normalize-whitespace';
 import "prismjs/themes/prism-tomorrow.min.css";
-
-let normalizer = new Normalizer({
-  'remove-trailing': true,
-  'remove-indent': true,
-  'left-trim': true,
-  'right-trim': true
-})
 
 const props = defineProps({
   type: {
@@ -21,7 +14,12 @@ const props = defineProps({
 onMounted(() => {
   window.Prism = window.Prism || {};
   window.Prism.manual = true;
-  normalizer = window.Prism.plugins.NormalizeWhitespace;
+  window.Prism.plugins.NormalizeWhitespace.setDefaults({
+    'remove-trailing': true,
+    'remove-indent': true,
+    'left-trim': true,
+    'right-trim': true
+  })
   Prism.highlightAll();
 })
 </script>
