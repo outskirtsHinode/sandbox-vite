@@ -94,6 +94,7 @@ import SideScroller from './components/SideScroller.vue';
       <ul>
         <li>gsapとそのプラグインScrollTriggerを用いて作成</li>
         <li>scrubでスクロール位置に合わせてアニメーションが動くのだけど、それがめちゃ面白い！</li>
+        <li>mix-blend-mode</li>
       </ul>
       <SampleCode type="javascript">
         <pre>
