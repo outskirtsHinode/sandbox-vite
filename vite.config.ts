@@ -5,7 +5,5 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   assetsInclude: ['**/*.mov'],
   plugins: [vue()],
-  build: {
-    outDir: './docs'
-  }
+  base:'/sandbox-vite/'
 })
