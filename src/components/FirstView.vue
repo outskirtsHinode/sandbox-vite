@@ -79,7 +79,6 @@ h1 {
   letter-spacing: 2px;
   font-size: 5vw;
   white-space: nowrap;
-
 }
 .ball {
   position: absolute;
