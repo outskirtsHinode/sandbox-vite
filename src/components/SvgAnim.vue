@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger)
 const targetLine = ref();
 
 onMounted(() => {
-  setTimeout(() => {
+  // setTimeout(() => {
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -34,7 +34,7 @@ onMounted(() => {
       'stroke-dashoffset': '0'
     }
   );
-}, 300)
+// }, 300)
 })
 </script>
 
