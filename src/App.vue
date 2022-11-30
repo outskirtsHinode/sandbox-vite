@@ -276,6 +276,7 @@ import SideScroller from './components/SideScroller.vue';
 <style scoped lang="scss">
 main {
   overflow: hidden;
+  max-width: 100vw;
 }
 .lead {
   text-align: center;

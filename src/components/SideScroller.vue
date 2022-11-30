@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger)
 const sideScroller = ref<HTMLElement|null>(null);
 
 onMounted(() => {
-  // setTimeout(() => {
+  setTimeout(() => {
     gsap.to(
       sideScroller.value,
       {
@@ -20,7 +20,7 @@ onMounted(() => {
         }
       }
     );
-  // }, 300)
+  }, 300)
 })
 
 </script>
