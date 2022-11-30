@@ -199,51 +199,74 @@ import SideScroller from './components/SideScroller.vue';
       </SampleCode>
     </DescriptionCard>
     <SideScroller>
-      <DescriptionCard start-x="0">
+      <DescriptionCard>
         <template #heading>
-          ほげほげほげ
+          最初のアニメーション
         </template>
+        <video autoplay loop muted>
+          <source src="./assets/first-view.mov">
+        </video>
         <ul>
-          <li>カスタムディレクティブを定義する練習</li>
-          <li>以下のコードでは `v-blur` 属性を要素に付与すれば、上端下端でぼかされるようになる</li>
-          <li>このブロックにのみ適用してみました。スクロールして端っこあたりに持ってくと挙動がわかるかと！</li>
+          <li>gsap.timeline関数を使用した</li>
+          <li>staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる</li>
         </ul>
-
-        <SampleCode type="javascript"><pre>
-          const blurDirective = {
-          mounted: function(el: HTMLElement) {
-            gsap.to(
-              el,
-              {
-                'filter': 'blur(10px)',
-                scrollTrigger: {
-                  trigger: el,
-                  // markers: true,
-                  scrub: true,
-                  start: "bottom 20%",
-                  end: "bottom top"
-                }
-              }
-            );
-            gsap.fromTo(
-              el,
-              {
-                'filter': 'blur(10px)'
-              },
-              {
-                'filter': 'blur(0px)',
-                scrollTrigger: {
-                  trigger: el,
-                  // markers: true,
-                  scrub: true,
-                  start: "top bottom",
-                  end: "top bottom-=40%"
-                }
-              }
-            )
-          }
-        }</pre></SampleCode>
       </DescriptionCard>
+      <DescriptionCard>
+        <template #heading>
+          最初のアニメーション
+        </template>
+        <video autoplay loop muted>
+          <source src="./assets/first-view.mov">
+        </video>
+        <ul>
+          <li>gsap.timeline関数を使用した</li>
+          <li>staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる</li>
+        </ul>
+      </DescriptionCard>
+      <SampleCode type="javascript">
+        <pre>
+          const blurDirective = {
+            mounted: function(el: HTMLElement) {
+              gsap.to(
+                el,
+                {
+                  'filter': 'blur(10px)',
+                  scrollTrigger: {
+                    trigger: el,
+                    // markers: true,
+                    scrub: true,
+                    start: "bottom 20%",
+                    end: "bottom top"
+                  }
+                }
+              );
+              gsap.fromTo(
+                el,
+                {
+                  'filter': 'blur(10px)'
+                },
+                {
+                  'filter': 'blur(0px)',
+                  scrollTrigger: {
+                    trigger: el,
+                    // markers: true,
+                    scrub: true,
+                    start: "top bottom",
+                    end: "top bottom-=40%"
+                  }
+                }
+              )
+            }
+          }
+          const main = createApp(App)
+          main.directive('blur', blurDirective)
+          main.mount('#app')
+        </pre>
+      </SampleCode>
+      <p style="color:white;width: 240px">
+        あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+        またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
+      </p>
     </SideScroller>
     <SvgAnim />
 
