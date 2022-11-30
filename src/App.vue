@@ -281,6 +281,5 @@ main {
   text-align: center;
   padding: 26rem 24px;
   color: #888;
-  mix-blend-mode: exclusion;
 }
 </style>
