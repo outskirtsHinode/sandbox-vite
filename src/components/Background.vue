@@ -11,8 +11,8 @@ onMounted(() => {
   gsap.to(
     box.value,
     {
-      'width': '300vmax',
-      'height': '300vmax',
+      'width': '500vw',
+      'height': '500vw',
       scrollTrigger: {
         trigger: activator.value,
         // markers: true,
@@ -35,7 +35,7 @@ onMounted(() => {
 .box {
   width: 0;
   height: 0;
-  border-radius: 150vmax;
+  border-radius: 600vw;
   background-color: black;
   position: fixed;
   bottom: 0;
