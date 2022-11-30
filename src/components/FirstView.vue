@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { gsap } from 'gsap'
 
 const headingText = ref<HTMLElement|null>();
 const ball = ref<HTMLElement|null>();
+const dvh = ref(window.innerHeight)
+
+let timeoutID:number
+window.addEventListener('resize', () => {
+  clearTimeout(timeoutID);
+  timeoutID = setTimeout(() => dvh.value = window.innerHeight, 300);
+})
 
 onMounted(() => {
   if(headingText.value){
@@ -56,7 +63,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="first-view">
+  <div class="first-view" :style="`height:${dvh}px`">
     <div ref="ball" class="ball"></div>
     <h1 ref="headingText">Frontend砂遊びしてみた</h1>
   </div>
@@ -66,7 +73,6 @@ onMounted(() => {
 .first-view {
   position: relative;
   width: 100vw;
-  height: 100vh;
   overflow: hidden;
 }
 h1 {
