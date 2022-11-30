@@ -57,45 +57,18 @@ import SideScroller from './components/SideScroller.vue';
       </SampleCode>
     </DescriptionCard>
 
-    <DescriptionCard start-x="-200">
-      <template #heading>
-        横からスライドインするエフェクト
-      </template>
-      <ul>
-        <li>gsapとそのプラグインScrollTriggerを用いて作成</li>
-        <li>scrubでスクロール位置に合わせてアニメーションが動くのだけど、それがめちゃ面白い！</li>
-      </ul>
-      <SampleCode type="javascript">
-        <pre>
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: "body",
-              // markers: true,
-              scrub: true,
-              start: "center center",
-              end: "bottom center"
-            }
-          });
-          tl.fromTo(
-            box.value,
-            {'width': '150vmax'},
-            {'width': '300vmax'},
-          );
-        </pre>
-      </SampleCode>
-    </DescriptionCard>
-
-    <Background />
-
     <DescriptionCard>
       <template #heading>
-        背景を一気に埋めるエフェクト
+        Gsapを利用してみた
       </template>
       <ul>
         <li>gsapとそのプラグインScrollTriggerを用いて作成</li>
         <li>scrubでスクロール位置に合わせてアニメーションが動くのだけど、それがめちゃ面白い！</li>
-        <li>mix-blend-mode</li>
       </ul>
+    </DescriptionCard>
+    <Background />
+    <DescriptionCard>
+      背景を埋めてみたり
       <SampleCode type="javascript">
         <pre>
           const tl = gsap.timeline({
@@ -115,6 +88,51 @@ import SideScroller from './components/SideScroller.vue';
         </pre>
       </SampleCode>
     </DescriptionCard>
+    <DescriptionCard start-x="-200">
+      スライドインさせてみたり
+      <SampleCode type="javascript">
+        <pre>
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: "body",
+              // markers: true,
+              scrub: true,
+              start: "center center",
+              end: "bottom center"
+            }
+          });
+          tl.fromTo(
+            box.value,
+            {'width': '150vmax'},
+            {'width': '300vmax'},
+          );
+        </pre>
+      </SampleCode>
+    </DescriptionCard>
+    <DescriptionCard v-blur>
+      上端下端でウィンドウに入る時にぼかしてみたり
+      <SampleCode type="javascript">
+        <pre>
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: "body",
+              // markers: true,
+              scrub: true,
+              start: "center center",
+              end: "bottom center"
+            }
+          });
+          tl.fromTo(
+            box.value,
+            {'width': '150vmax'},
+            {'width': '300vmax'},
+          );
+        </pre>
+      </SampleCode>
+    </DescriptionCard>
+
+
+
 
     <DescriptionCard>
       <template #heading>
