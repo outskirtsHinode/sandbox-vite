@@ -6,12 +6,6 @@ const headingText = ref<HTMLElement|null>();
 const ball = ref<HTMLElement|null>();
 const dvh = ref(window.innerHeight)
 
-let timeoutID:number
-window.addEventListener('resize', () => {
-  clearTimeout(timeoutID);
-  timeoutID = setTimeout(() => dvh.value = window.innerHeight, 300);
-})
-
 onMounted(() => {
   if(headingText.value){
     const headingTextChars = headingText.value.textContent!.split('')
