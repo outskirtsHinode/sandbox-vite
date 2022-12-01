@@ -6,35 +6,34 @@ gsap.registerPlugin(ScrollTrigger)
 const targetLine = ref();
 
 onMounted(() => {
-  // setTimeout(() => {
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".line",
-      markers: true,
-      scrub: true,
-      start: "top+=200 top",
-      end: "bottom bottom"
-    }
-  });
-  const svgPath = targetLine.value as SVGGeometryElement
-  const svgPathLength = Math.floor(svgPath.getTotalLength())
-  tl.set(
-    svgPath,
-    {
-      'stroke-width': '100px'
-    }
-  ).fromTo(
-    svgPath,
-    {
-      'stroke-dasharray': svgPathLength,
-      'stroke-dashoffset': svgPathLength,
-    },
-    {
-      'stroke-dashoffset': '0'
-    }
-  );
-// }, 300)
+  setTimeout(() => {
+    const svgPath = targetLine.value as SVGGeometryElement
+    const svgPathLength = Math.floor(svgPath.getTotalLength())
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: svgPath,
+        markers: true,
+        scrub: true,
+        start: "top+=100 top",
+        end: "bottom bottom"
+      }
+    });
+    tl.set(
+      svgPath,
+      {
+        'stroke-width': '100px'
+      }
+    ).fromTo(
+      svgPath,
+      {
+        'stroke-dasharray': svgPathLength,
+        'stroke-dashoffset': svgPathLength,
+      },
+      {
+        'stroke-dashoffset': '0'
+      }
+    );
+  }, 300)
 })
 </script>
 
