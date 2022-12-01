@@ -14,10 +14,8 @@ import SideScroller from './components/SideScroller.vue';
   <main ref="sandbox">
     <FirstView />
     <div class="lead">
-      <p>
+      <p v-budoux>
         アニメーションまわりとか最近のやりかた試したことなかったので独習してみました！
-      </p>
-      <p>
         コテコテになってしまっていますが、練習ということで…！
       </p>
     </div>
