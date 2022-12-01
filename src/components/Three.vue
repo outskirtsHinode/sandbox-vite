@@ -137,9 +137,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .three{
   position: relative;
-  top: 5vh;
-  left: 5vw;
-  width: 90vw;
-  height: 90vh;
+  width: 100vw;
+  height: 100vh;
 }
 </style>
