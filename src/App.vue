@@ -7,6 +7,7 @@ import Background from './components/Background.vue'
 import SampleCode from './components/SampleCode.vue'
 import DescriptionCard from './components/DescriptionCard.vue';
 import SideScroller from './components/SideScroller.vue';
+import Three from './components/Three.vue';
 
 </script>
 
@@ -267,6 +268,7 @@ import SideScroller from './components/SideScroller.vue';
       </p>
     </SideScroller>
     <SvgAnim />
+    <Three />
 
   </main>
 </template>
