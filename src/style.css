@@ -20,6 +20,7 @@ a:hover {
 }
 html {
   background-color: #fefefa;
+  height: -webkit-fill-available;
 }
 body {
   margin: 0;
@@ -28,6 +29,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   max-width: 100vw;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
 }
 
 h1 {
