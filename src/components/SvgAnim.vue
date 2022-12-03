@@ -12,7 +12,7 @@ onMounted(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: svgPath,
-        markers: true,
+        // markers: true,
         scrub: true,
         start: "top+=100 top",
         end: "bottom bottom"

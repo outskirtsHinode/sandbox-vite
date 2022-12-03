@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
 
+const base = ref<HTMLElement|null>();
 const headingText = ref<HTMLElement|null>();
 const ball = ref<HTMLElement|null>();
 const dvh = ref(window.innerHeight)
@@ -51,13 +52,21 @@ onMounted(() => {
         },
         ease: "Bounce.easeOut",
       },
+    ).to(
+      base.value!,
+      {
+        autoAlpha: 0,
+        scale: 1.2,
+        duration: 0.6,
+        ease: "Power.easeOut",
+      },
     )
   }
 })
 </script>
 
 <template>
-  <div class="first-view" :style="`height:${dvh}px`">
+  <div class="first-view" ref="base" :style="`height:${dvh}px`">
     <div ref="ball" class="ball"></div>
     <h1 ref="headingText">Frontend砂遊びしてみた</h1>
   </div>
@@ -65,9 +74,14 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .first-view {
-  position: relative;
+  position: fixed;
+  top: 0;
   width: 100vw;
+  height: 100vh;
+  height: 100mvh;
   overflow: hidden;
+  z-index: 1;
+  background-color: #fff;
 }
 h1 {
   display: block;
