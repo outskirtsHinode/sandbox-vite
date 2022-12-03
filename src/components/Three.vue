@@ -27,7 +27,7 @@ const RENDERER_PARAM = {
 };
 
 let globalColor = [0.3, 0.3, 0.3, 0.6];
-let pointSize = 16.0;              // 頂点のポイントサイズ
+let pointSize = 8.0;              // 頂点のポイントサイズ
 
 // scene
 const scene = new Scene();
@@ -128,7 +128,7 @@ const init = () => {
     });
 
     // particle
-    const COUNT = 500;
+    const COUNT = 100;
     const SIZE = 6.0;
     const vertices = [];
     const randomValue = [];
