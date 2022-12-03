@@ -60,10 +60,10 @@ onMounted(() => {
     ).to(
       base.value!,
       {
-        autoAlpha: 0,
-        scale: 1.5,
+        background: 'rgba(0,0,0,0)',
+        scale: 0.8,
         duration: 1,
-        ease: "Power.easeOut",
+        ease: "Power2.easeOut",
       },
     ).to(
       'body',
@@ -85,7 +85,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .first-view {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100vw;
   height: 100vh;
