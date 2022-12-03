@@ -36,8 +36,8 @@ onMounted(() => {
         // markers: true,
         // scrub: true,
         toggleActions: "play none none reset",
-        start: "top center+=40%",
-        end: "top center-=40%"
+        start: "top center+=30%",
+        end: "top center-=30%"
       }
     }
   );
@@ -58,13 +58,14 @@ onMounted(() => {
 <style scoped lang="scss">
 .card {
   padding: 2em;
-  // mix-blend-mode: exclusion;
-  max-width: 100vw;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
   box-sizing: border-box;
 }
 .card__heading {
   color: white;
-  font-size: 2rem;
+  font-size: 1.6rem;
   line-height: 1.5;
   font-weight: 700;
 }

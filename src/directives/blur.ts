@@ -29,7 +29,7 @@ export const blurDirective = {
           // markers: true,
           scrub: true,
           start: "top bottom",
-          end: "top bottom-=300"
+          end: "top center"
         }
       }
     )

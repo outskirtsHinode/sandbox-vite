@@ -18,6 +18,8 @@ import Three from './components/Three.vue';
     <div class="lead">
       <p v-budoux>
         アニメーションまわりとか最近のやりかた試したことなかったので独習してみました！
+      </p>
+      <p v-budoux>
         コテコテになってしまっていますが、練習ということで…！
       </p>
     </div>
@@ -66,7 +68,6 @@ import Three from './components/Three.vue';
         <li v-budoux>scrubでスクロール位置に合わせてアニメーションが動くのだけど、それがめちゃ面白い！</li>
       </ul>
     </DescriptionCard>
-    <!-- <Background /> -->
     <DescriptionCard>
       背景を埋めてみたり
       <SampleCode type="javascript">
@@ -88,6 +89,8 @@ import Three from './components/Three.vue';
         </pre>
       </SampleCode>
     </DescriptionCard>
+    <Background />
+
     <DescriptionCard start-x="-200">
       スライドインさせてみたり
       <SampleCode type="javascript">
@@ -147,9 +150,21 @@ import Three from './components/Three.vue';
       </ul>
     </DescriptionCard>
 
-    <DescriptionCard v-blur>
+    <DescriptionCard>
       <template #heading>
-        viewportの上端下端でぼかすカスタムディレクティブを作成した
+        Three.jsを使って背景を作成した
+      </template>
+      <ul>
+        <li v-budoux>シェーダーをどうしても自分で作成してみたくて、色々思考錯誤した</li>
+        <li v-budoux>本当はWebGL直接いじる感じでやろうと思ってたけど、カスタムシェーダーの勉強のために他の箇所はThree.jsにおまかせした感じになった。</li>
+        <li v-budoux>GLSLまじでむずいけど、覚えたら絶対楽しいのがわかった</li>
+        <li v-budoux>行列とベクトルをちゃんと勉強したい気持ちになりまくっている…！！！</li>
+      </ul>
+    </DescriptionCard>
+
+    <DescriptionCard>
+      <template #heading>
+        カスタムディレクティブを作成した
       </template>
       <ul>
         <li v-budoux>カスタムディレクティブを定義する練習</li>

@@ -8,18 +8,27 @@ const activator = ref();
 const box = ref();
 
 onMounted(() => {
-  gsap.to(
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: activator.value,
+      scrub: true,
+      start: "top bottom",
+      end: "top center"
+    }
+  });
+  tl.to(
     box.value,
     {
-      'width': '500vw',
-      'height': '500vw',
-      scrollTrigger: {
-        trigger: activator.value,
-        // markers: true,
-        scrub: true,
-        start: "top center",
-        end: "bottom top"
-      }
+      'width': '300vmax',
+      'height': '300vmax',
+    },
+  ).fromTo(
+    box.value,
+    {
+      autoAlpha: 1
+    },
+    {
+      autoAlpha: 0,
     },
   );
 })
@@ -36,7 +45,7 @@ onMounted(() => {
   width: 0;
   height: 0;
   border-radius: 600vw;
-  background-color: #000;
+  background-color: #3c454a;
   position: fixed;
   bottom: 0;
   left: 0;
