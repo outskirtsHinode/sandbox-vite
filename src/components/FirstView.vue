@@ -61,15 +61,16 @@ onMounted(() => {
       base.value!,
       {
         autoAlpha: 0,
-        scale: 1.2,
-        duration: 0.6,
+        scale: 1.5,
+        duration: 1,
         ease: "Power.easeOut",
       },
     ).to(
       'body',
       {
         overflow: 'auto'
-      }
+      },
+      '-=1'
     )
   }
 })
@@ -91,11 +92,12 @@ onMounted(() => {
   height: 100mvh;
   overflow: hidden;
   z-index: 1;
-  background-color: #fff;
+  background-color: black;
 }
 h1 {
   display: block;
   position: absolute;
+  color: white;
   inset: 0;
   margin: auto;
   width: fit-content;
@@ -111,6 +113,6 @@ h1 {
   width: 4vw;
   height: 4vw;
   border-radius: 150vmax;
-  background-color: #213547;
+  background-color: white;
 }
 </style>

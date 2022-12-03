@@ -128,7 +128,7 @@ const init = () => {
     });
 
     // particle
-    const COUNT = 1000;
+    const COUNT = 500;
     const SIZE = 6.0;
     const vertices = [];
     const randomValue = [];
