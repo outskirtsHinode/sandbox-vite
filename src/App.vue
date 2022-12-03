@@ -26,8 +26,8 @@ import Three from './components/Three.vue';
         Viteを使ってみた
       </template>
       <ul>
-        <li>想像以上にかんたんに環境が作れてびっくり！</li>
-        <li>ほんとにGetting startedのコマンド3つくらい叩いたらできた</li>
+        <li v-budoux>想像以上にかんたんに環境が作れてびっくり！</li>
+        <li v-budoux>ほんとにGetting startedのコマンド3つくらい叩いたらできた</li>
       </ul>
     </DescriptionCard>
 
@@ -36,8 +36,8 @@ import Three from './components/Three.vue';
         Vue3 Composition API を利用してみた
       </template>
       <ul>
-        <li>まだoptionの記法に慣れているので、違和感がある…</li>
-        <li>これに慣れてきたらReactとかのコード読み解きもラクになる予感がするので頑張りたいとこ</li>
+        <li v-budoux>まだoptionの記法に慣れているので、違和感がある…</li>
+        <li v-budoux>これに慣れてきたらReactとかのコード読み解きもラクになる予感がするので頑張りたいとこ</li>
       </ul>
       <SampleCode type="javascript">
         <pre>
@@ -62,8 +62,8 @@ import Three from './components/Three.vue';
         Gsapを利用してみた
       </template>
       <ul>
-        <li>gsapとそのプラグインScrollTriggerを用いて作成</li>
-        <li>scrubでスクロール位置に合わせてアニメーションが動くのだけど、それがめちゃ面白い！</li>
+        <li v-budoux>gsapとそのプラグインScrollTriggerを用いて作成</li>
+        <li v-budoux>scrubでスクロール位置に合わせてアニメーションが動くのだけど、それがめちゃ面白い！</li>
       </ul>
     </DescriptionCard>
     <!-- <Background /> -->
@@ -142,8 +142,8 @@ import Three from './components/Three.vue';
         <source src="./assets/first-view.mov">
       </video>
       <ul>
-        <li>gsap.timeline関数を使用した</li>
-        <li>staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる</li>
+        <li v-budoux>gsap.timeline関数を使用した</li>
+        <li v-budoux>staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる</li>
       </ul>
     </DescriptionCard>
 
@@ -152,9 +152,9 @@ import Three from './components/Three.vue';
         viewportの上端下端でぼかすカスタムディレクティブを作成した
       </template>
       <ul>
-        <li>カスタムディレクティブを定義する練習</li>
-        <li>scrollのstartとendまわりの定義の仕方、fromTo()とのかけ合わせ方が混乱してしまったが、何とかできた！</li>
-        <li>このカスタムコンポーネントには作成した `v-blur` ディレクティブを指定しているので、上端下端でぼかされるはず</li>
+        <li v-budoux>カスタムディレクティブを定義する練習</li>
+        <li v-budoux>scrollのstartとendまわりの定義の仕方、fromTo()とのかけ合わせ方が混乱してしまったが、何とかできた！</li>
+        <li v-budoux>このカスタムコンポーネントには作成した `v-blur` ディレクティブを指定しているので、上端下端でぼかされるはず</li>
       </ul>
 
       <SampleCode type="javascript">
@@ -207,8 +207,8 @@ import Three from './components/Three.vue';
           <source src="./assets/first-view.mov">
         </video>
         <ul>
-          <li>gsap.timeline関数を使用した</li>
-          <li>staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる</li>
+          <li v-budoux>gsap.timeline関数を使用した</li>
+          <li v-budoux>staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる</li>
         </ul>
       </DescriptionCard>
       <DescriptionCard>
@@ -219,8 +219,8 @@ import Three from './components/Three.vue';
           <source src="./assets/first-view.mov">
         </video>
         <ul>
-          <li>gsap.timeline関数を使用した</li>
-          <li>staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる</li>
+          <li v-budoux>gsap.timeline関数を使用した</li>
+          <li v-budoux>staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる</li>
         </ul>
       </DescriptionCard>
       <SampleCode type="javascript">
@@ -263,7 +263,7 @@ import Three from './components/Three.vue';
           main.mount('#app')
         </pre>
       </SampleCode>
-      <p style="color:white;width: 240px">
+      <p v-budoux style="color:white;width: 240px">
         あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
         またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
       </p>
