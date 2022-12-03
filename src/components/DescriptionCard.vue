@@ -58,7 +58,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .card {
   padding: 2em;
-  mix-blend-mode: exclusion;
+  // mix-blend-mode: exclusion;
   max-width: 100vw;
   box-sizing: border-box;
 }

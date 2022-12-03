@@ -12,6 +12,7 @@ import Three from './components/Three.vue';
 </script>
 
 <template>
+  <Three />
   <main ref="sandbox">
     <FirstView />
     <div class="lead">
@@ -65,7 +66,7 @@ import Three from './components/Three.vue';
         <li>scrubでスクロール位置に合わせてアニメーションが動くのだけど、それがめちゃ面白い！</li>
       </ul>
     </DescriptionCard>
-    <Background />
+    <!-- <Background /> -->
     <DescriptionCard>
       背景を埋めてみたり
       <SampleCode type="javascript">
@@ -267,7 +268,6 @@ import Three from './components/Three.vue';
         またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
       </p>
     </SideScroller>
-    <Three />
 
     <SvgAnim />
   </main>
@@ -276,6 +276,7 @@ import Three from './components/Three.vue';
 <style scoped lang="scss">
 main {
   max-width: 100vw;
+  overflow: hidden;
 }
 .lead {
   text-align: center;
