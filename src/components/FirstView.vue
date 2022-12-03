@@ -21,6 +21,11 @@ onMounted(() => {
         x: '-50vw',
         y: '-20vh',
       }
+    ).set(
+      'body',
+      {
+        overflow: 'hidden'
+      }
     ).to(
       ball.value!,
       {
@@ -60,6 +65,11 @@ onMounted(() => {
         duration: 0.6,
         ease: "Power.easeOut",
       },
+    ).to(
+      'body',
+      {
+        overflow: 'auto'
+      }
     )
   }
 })

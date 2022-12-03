@@ -33,7 +33,7 @@ pre {
   max-width: 640px;
   border-radius: 8px;
   backdrop-filter: blur(24px);
-  background: transparent;
+  background: black;
   border: 1px solid white;
 }
 </style>
