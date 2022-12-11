@@ -68,28 +68,6 @@ import Three from './components/Three.vue';
         <li v-budoux>scrubでスクロール位置に合わせてアニメーションが動くのだけど、それがめちゃ面白い！</li>
       </ul>
     </DescriptionCard>
-    <DescriptionCard>
-      背景を埋めてみたり
-      <SampleCode type="javascript">
-        <pre>
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: "body",
-              // markers: true,
-              scrub: true,
-              start: "center center",
-              end: "bottom center"
-            }
-          });
-          tl.fromTo(
-            box.value,
-            {'width': '150vmax'},
-            {'width': '300vmax'},
-          );
-        </pre>
-      </SampleCode>
-    </DescriptionCard>
-    <Background />
 
     <DescriptionCard start-x="-200">
       スライドインさせてみたり
@@ -133,7 +111,28 @@ import Three from './components/Three.vue';
         </pre>
       </SampleCode>
     </DescriptionCard>
-
+    <DescriptionCard>
+      背景を埋めてみたり
+      <SampleCode type="javascript">
+        <pre>
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: "body",
+              // markers: true,
+              scrub: true,
+              start: "center center",
+              end: "bottom center"
+            }
+          });
+          tl.fromTo(
+            box.value,
+            {'width': '150vmax'},
+            {'width': '300vmax'},
+          );
+        </pre>
+      </SampleCode>
+    </DescriptionCard>
+    <Background />
 
 
 
