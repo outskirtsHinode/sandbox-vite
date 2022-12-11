@@ -14,8 +14,6 @@ const props = defineProps({
     default: null
   }
 })
-const slots = useSlots()
-
 onMounted(() => {
   window.Prism = window.Prism || {};
   window.Prism.manual = true;
@@ -28,17 +26,10 @@ onMounted(() => {
   Prism.highlightAll();
 })
 
-const isMultiple = (() => {
-  if(slots) {
-    return slots!.default()[0].type === 'pre'
-  } else {
-    return false
-  }
-})
 </script>
 
 <template>
-  <figure v-if="isMultiple()">
+  <figure v-if="$slots.default!()[0].type === 'pre'">
     <pre><code :class="'language-' + type"><slot></slot></code></pre>
     <figcaption v-if="caption">{{caption}}</figcaption>
   </figure>
