@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, useSlots} from 'vue'
 import Prism from 'prismjs'
 import 'prismjs/plugins/normalize-whitespace/prism-normalize-whitespace';
 import "prismjs/themes/prism-tomorrow.min.css";
@@ -8,8 +8,13 @@ const props = defineProps({
   type: {
     type: String,
     default: 'css'
+  },
+  caption: {
+    type: String,
+    default: null
   }
 })
+const slots = useSlots()
 
 onMounted(() => {
   window.Prism = window.Prism || {};
@@ -22,10 +27,24 @@ onMounted(() => {
   })
   Prism.highlightAll();
 })
+
+const isMultiple = (() => {
+  if(slots !== undefined) {
+    return slots.default()[0].children.includes('\n');
+  } else {
+    return false
+  }
+})
 </script>
 
 <template>
-  <pre><code :class="'language-' + type"><slot></slot></code></pre>
+  <figure v-if="isMultiple()">
+    <pre><code :class="'language-' + type"><slot></slot></code></pre>
+    <figcaption v-if="caption">{{caption}}</figcaption>
+  </figure>
+  <figure v-else class="inline">
+    <code :class="'language-' + type"><slot></slot></code>
+  </figure>
 </template>
 
 <style scoped lang="scss">
@@ -35,5 +54,15 @@ pre {
   backdrop-filter: blur(24px);
   background: black;
   border: 1px solid white;
+}
+figure {
+  margin: 0;
+}
+.inline {
+  display: inline;
+}
+figcaption {
+  font-size: .8em;
+  color: #aaa;
 }
 </style>
