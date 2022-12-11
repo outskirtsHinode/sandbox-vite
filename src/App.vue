@@ -137,9 +137,7 @@ import Three from './components/Three.vue';
 
       <DescriptionCard>
         <h3>timelineを用いた最初のアニメーション</h3>
-        <video autoplay loop muted>
-          <source src="./assets/first-view.mov">
-        </video>
+        <video src="./assets/first-view.mov" autoplay loop muted playsinline></video>
         <ul>
           <li v-budoux>gsap.timeline関数を使用した</li>
           <li v-budoux>このアニメーションの次はこのアニメーション→その次のアニメーション…と手続き的にアニメーションを実行できる</li>
