@@ -5,6 +5,7 @@ import FirstView from './components/FirstView.vue'
 import SvgAnim from './components/SvgAnim.vue'
 import Background from './components/Background.vue'
 import SampleCode from './components/SampleCode.vue'
+import SampleCard from './components/SampleCard.vue'
 import DescriptionCard from './components/DescriptionCard.vue';
 import SideScroller from './components/SideScroller.vue';
 import Three from './components/Three.vue';
@@ -41,7 +42,7 @@ import Three from './components/Three.vue';
         </template>
         <ul>
           <li v-budoux>まだoptionの記法に慣れているので、違和感がある…</li>
-          <li v-budoux>これに慣れてきたらReactとかのコード読み解きもラクになる予感がするので頑張りたいとこ</li>
+          <li v-budoux>これに慣れてきたらTypeScriptとかのコード読み解きもラクになる予感がするので頑張りたいとこ</li>
         </ul>
         <SampleCode type="javascript" caption="とあるコンポーネントの <script setup> タグ内">
           <pre>
@@ -57,6 +58,57 @@ import Three from './components/Three.vue';
             onMounted(() => {
               // ここに処理を記述
             })
+          </pre>
+        </SampleCode>
+      </DescriptionCard>
+
+      <DescriptionCard>
+        <template #heading>
+          カスタムディレクティブを作成した
+        </template>
+        <ul>
+          <li v-budoux>カスタムディレクティブを定義する練習</li>
+          <li v-budoux>scrollのstartとendまわりの定義の仕方、fromTo()とのかけ合わせ方が混乱してしまったが、何とかできた！</li>
+          <li v-budoux>このカスタムコンポーネントには作成した `v-blur` ディレクティブを指定しているので、上端下端でぼかされるはず</li>
+        </ul>
+        <SampleCode type="javascript" caption="ほげほｇほえｇほえ">
+          <pre>
+            const blurDirective = {
+              mounted: function(el: HTMLElement) {
+                gsap.to(
+                  el,
+                  {
+                    'filter': 'blur(10px)',
+                    scrollTrigger: {
+                      trigger: el,
+                      // markers: true,
+                      scrub: true,
+                      start: "bottom 20%",
+                      end: "bottom top"
+                    }
+                  }
+                );
+                gsap.fromTo(
+                  el,
+                  {
+                    'filter': 'blur(10px)'
+                  },
+                  {
+                    'filter': 'blur(0px)',
+                    scrollTrigger: {
+                      trigger: el,
+                      // markers: true,
+                      scrub: true,
+                      start: "top bottom",
+                      end: "top bottom-=40%"
+                    }
+                  }
+                )
+              }
+            }
+            const main = createApp(App)
+            main.directive('blur', blurDirective)
+            main.mount('#app')
           </pre>
         </SampleCode>
       </DescriptionCard>
@@ -84,14 +136,14 @@ import Three from './components/Three.vue';
       </DescriptionCard>
 
       <DescriptionCard>
-        timelineを用いた最初のアニメーション
+        <h3>timelineを用いた最初のアニメーション</h3>
         <video autoplay loop muted>
           <source src="./assets/first-view.mov">
         </video>
         <ul>
           <li v-budoux>gsap.timeline関数を使用した</li>
           <li v-budoux>このアニメーションの次はこのアニメーション→その次のアニメーション…と手続き的にアニメーションを実行できる</li>
-          <li v-budoux>ボールが跳ねる→文字が位置文字ずつ跳ねる→文字が縮小する→(一個前と同時に)背景が透過する</li>
+          <li v-budoux>ボールが跳ねる→文字が一文字ずつ跳ねる→文字が縮小する→(一個前と同時に)背景が透過する</li>
           <li v-budoux>
             staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる
             <ul>
@@ -102,7 +154,7 @@ import Three from './components/Three.vue';
       </DescriptionCard>
 
       <DescriptionCard start-x="-200">
-        スライドインさせるアニメーション
+        <h3>スライドインさせるアニメーション</h3>
         <SampleCode type="javascript" caption="スライドインでのコンポーネント内のgsapアニメーション記述部分">
           <pre>
             const props = defineProps({
@@ -149,14 +201,14 @@ import Three from './components/Three.vue';
           <li v-budoux>
             今回はコンポーネントのpropsとして定義した
             <ul>
-              <li>startXもしくはstartYのpropsを指定するとその位置からスライドしているように見える</li>
+              <li><SampleCode type="javascript">startX</SampleCode>もしくは<SampleCode type="javascript">startY</SampleCode>の独自propsを指定するとその位置からスライドしているように見える</li>
               <li>このカードは <SampleCode type="javascript">start-x="-200"</SampleCode>を指定している</li>
             </ul>
           </li>
         </ul>
       </DescriptionCard>
       <DescriptionCard v-blur>
-        上端下端でウィンドウに入る時にぼかすアニメーション
+        <h3>上端下端でウィンドウに入る時にぼかすアニメーション</h3>
         <SampleCode type="javascript" caption="ぼかすエフェクトのディレクティブ内のgsapアニメーション記述部分">
           <pre>
             gsap.to(
@@ -190,13 +242,20 @@ import Three from './components/Three.vue';
             )
           </pre>
         </SampleCode>
+        <ul>
+          <li v-budoux>スクロールの際、特定要素がウィンドウの特定位置に来ることをトリガーとしてぼかしを入れる</li>
+          <li v-budoux><SampleCode type="javascript">scrub: true;</SampleCode>とすることで、スクロール位置とアニメーションの進行量をあわせることができる(おもしろいいいい)</li>
+          <li v-budoux>このセクションをウィンドウの上端下端に持ってくと挙動が確認できる</li>
+          <li v-budoux>今回はVue.jsの練習も兼ねてカスタムディレクティブとしてblurディレクティブを定義した(詳細は後述)</li>
+        </ul>
       </DescriptionCard>
+
       <DescriptionCard style="mix-blend-mode:exclusion">
-        背景を埋めてみたり
+        <h3>背景を埋めるエフェクト</h3>
         <SampleCode type="javascript" caption="背景を埋めるエフェクトコンポーネント内のgsapアニメーション記述部分">
           <pre>
             const activator = ref();
-            const box = ref();
+            const expandBall = ref();
 
             onMounted(() => {
               const tl = gsap.timeline({
@@ -208,13 +267,13 @@ import Three from './components/Three.vue';
                 }
               });
               tl.to(
-                box.value,
+                expandBall.value,
                 {
                   'width': '300vmax',
                   'height': '300vmax',
                 },
               ).fromTo(
-                box.value,
+                expandBall.value,
                 {
                   autoAlpha: 1
                 },
@@ -225,148 +284,37 @@ import Three from './components/Three.vue';
             })
           </pre>
         </SampleCode>
+        <ul>
+          <li v-budoux>スクロールの際、アニメーションさせる要素とトリガーさせる要素を別にすることができる</li>
+          <li v-budoux>今回は、このセクションがウィンドウに入ったら、背景の<SampleCode>.expandBall</SampleCode>を広げるエフェクトを作成してみた</li>
+        </ul>
       </DescriptionCard>
       <Background />
+      <DescriptionCard>
+        <h3>スクロールハックするエフェクト</h3>
+        <ul>
+          <li v-budoux>スクロールを用いてアニメーションを作成できるということは、スクロール対象を固定して横に移動するアニメーションを適用してあげれば、縦スクロールを横スクロールの様に見立てるような見せ方もできる</li>
+          <li v-budoux>以下は、20枚のカードを横に並べたサンプル。縦スクロールに応じて横に移動する(横スクロールしているように見える)</li>
+        </ul>
+      </DescriptionCard>
+      <SideScroller>
+        <SampleCard v-for="n in 20">{{n}}</SampleCard>
+      </SideScroller>
     </article>
 
-
-
-
-
-
-    <DescriptionCard>
-      <template #heading>
-        Three.jsを使って背景を作成した
-      </template>
-      <ul>
-        <li v-budoux>シェーダーをどうしても自分で作成してみたくて、色々思考錯誤した</li>
-        <li v-budoux>本当はWebGL直接いじる感じでやろうと思ってたけど、カスタムシェーダーの勉強のために他の箇所はThree.jsにおまかせした感じになった。</li>
-        <li v-budoux>GLSLまじでむずいけど、覚えたら絶対楽しいのがわかった</li>
-        <li v-budoux>行列とベクトルをちゃんと勉強したい気持ちになりまくっている…！！！</li>
-      </ul>
-    </DescriptionCard>
-
-    <DescriptionCard>
-      <template #heading>
-        カスタムディレクティブを作成した
-      </template>
-      <ul>
-        <li v-budoux>カスタムディレクティブを定義する練習</li>
-        <li v-budoux>scrollのstartとendまわりの定義の仕方、fromTo()とのかけ合わせ方が混乱してしまったが、何とかできた！</li>
-        <li v-budoux>このカスタムコンポーネントには作成した `v-blur` ディレクティブを指定しているので、上端下端でぼかされるはず</li>
-      </ul>
-
-      <SampleCode type="javascript" caption="ほげほｇほえｇほえ">
-        <pre>
-          const blurDirective = {
-            mounted: function(el: HTMLElement) {
-              gsap.to(
-                el,
-                {
-                  'filter': 'blur(10px)',
-                  scrollTrigger: {
-                    trigger: el,
-                    // markers: true,
-                    scrub: true,
-                    start: "bottom 20%",
-                    end: "bottom top"
-                  }
-                }
-              );
-              gsap.fromTo(
-                el,
-                {
-                  'filter': 'blur(10px)'
-                },
-                {
-                  'filter': 'blur(0px)',
-                  scrollTrigger: {
-                    trigger: el,
-                    // markers: true,
-                    scrub: true,
-                    start: "top bottom",
-                    end: "top bottom-=40%"
-                  }
-                }
-              )
-            }
-          }
-          const main = createApp(App)
-          main.directive('blur', blurDirective)
-          main.mount('#app')
-        </pre>
-      </SampleCode>
-    </DescriptionCard>
-    <SideScroller>
+    <article>
       <DescriptionCard>
         <template #heading>
-          最初のアニメーション
+          Three.jsを使って背景を作成した
         </template>
-        <video autoplay loop muted>
-          <source src="./assets/first-view.mov">
-        </video>
         <ul>
-          <li v-budoux>gsap.timeline関数を使用した</li>
-          <li v-budoux>staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる</li>
+          <li v-budoux>シェーダーをどうしても自分で作成してみたくて、色々思考錯誤した</li>
+          <li v-budoux>本当はWebGL直接いじる感じでやろうと思ってたけど、カスタムシェーダーの勉強のために他の箇所はThree.jsにおまかせした感じになった。</li>
+          <li v-budoux>GLSLまじでむずいけど、覚えたら絶対楽しいのがわかった</li>
+          <li v-budoux>行列とベクトルをちゃんと勉強したい気持ちになりまくっている…！！！</li>
         </ul>
       </DescriptionCard>
-      <DescriptionCard>
-        <template #heading>
-          最初のアニメーション
-        </template>
-        <video autoplay loop muted>
-          <source src="./assets/first-view.mov">
-        </video>
-        <ul>
-          <li v-budoux>gsap.timeline関数を使用した</li>
-          <li v-budoux>staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる</li>
-        </ul>
-      </DescriptionCard>
-      <SampleCode type="javascript">
-        <pre>
-          const blurDirective = {
-            mounted: function(el: HTMLElement) {
-              gsap.to(
-                el,
-                {
-                  'filter': 'blur(10px)',
-                  scrollTrigger: {
-                    trigger: el,
-                    // markers: true,
-                    scrub: true,
-                    start: "bottom 20%",
-                    end: "bottom top"
-                  }
-                }
-              );
-              gsap.fromTo(
-                el,
-                {
-                  'filter': 'blur(10px)'
-                },
-                {
-                  'filter': 'blur(0px)',
-                  scrollTrigger: {
-                    trigger: el,
-                    // markers: true,
-                    scrub: true,
-                    start: "top bottom",
-                    end: "top bottom-=40%"
-                  }
-                }
-              )
-            }
-          }
-          const main = createApp(App)
-          main.directive('blur', blurDirective)
-          main.mount('#app')
-        </pre>
-      </SampleCode>
-      <p v-budoux style="color:white;width: 240px">
-        あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
-        またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
-      </p>
-    </SideScroller>
+    </article>
 
     <SvgAnim />
   </main>

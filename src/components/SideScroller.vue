@@ -5,22 +5,29 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger)
 
 const sideScroller = ref<HTMLElement|null>(null);
+const overflowWidth = computed(() => {
+  if(sideScroller.value) {
+    return sideScroller.value.clientWidth - window.innerWidth
+  }else{
+    return 0
+  }
+})
 
 onMounted(() => {
-  setTimeout(() => {
-    gsap.to(
-      sideScroller.value,
-      {
-        x: (sideScroller.value!.clientWidth - window.innerWidth) * -1,
-        scrollTrigger: {
-          trigger: sideScroller.value!,
-          scrub: true,
-          pin: true,
-          end: () => "+=" + (sideScroller.value!.clientWidth - window.innerWidth),
-        }
+  gsap.to(
+    sideScroller.value,
+    {
+      x: - overflowWidth.value,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sideScroller.value!,
+        scrub: true,
+        pin: true,
+        start: 'top top',
+        end: () => "+=" + overflowWidth.value,
       }
-    );
-  }, 300)
+    }
+  );
 })
 
 </script>

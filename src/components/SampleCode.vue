@@ -59,7 +59,7 @@ figure {
   margin: 0;
 }
 .inline {
-  display: inline;
+  display: inline-block;
 }
 figcaption {
   font-size: .8em;

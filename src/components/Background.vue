@@ -5,7 +5,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger)
 
 const activator = ref();
-const box = ref();
+const expandBall = ref();
 
 onMounted(() => {
   const tl = gsap.timeline({
@@ -17,13 +17,13 @@ onMounted(() => {
     }
   });
   tl.to(
-    box.value,
+    expandBall.value,
     {
       'width': '300vmax',
       'height': '300vmax',
     },
   ).fromTo(
-    box.value,
+    expandBall.value,
     {
       autoAlpha: 1
     },
@@ -37,11 +37,11 @@ onMounted(() => {
 
 <template>
   <div ref="activator"></div>
-  <div ref="box" class="box"></div>
+  <div ref="expandBall" class="expandBall"></div>
 </template>
 
 <style scoped lang="scss">
-.box {
+.expandBall {
   width: 0;
   height: 0;
   border-radius: 600vw;
