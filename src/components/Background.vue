@@ -12,7 +12,7 @@ onMounted(() => {
     scrollTrigger: {
       trigger: activator.value,
       scrub: true,
-      start: "top bottom",
+      start: "top-=200 bottom",
       end: "top center"
     }
   });

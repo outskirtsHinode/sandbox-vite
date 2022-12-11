@@ -69,11 +69,14 @@ import Three from './components/Three.vue';
         <ul>
           <li v-budoux>カスタムディレクティブを定義する練習</li>
           <li v-budoux>scrollのstartとendまわりの定義の仕方、fromTo()とのかけ合わせ方が混乱してしまったが、何とかできた！</li>
-          <li v-budoux>このカスタムコンポーネントには作成した `v-blur` ディレクティブを指定しているので、上端下端でぼかされるはず</li>
         </ul>
-        <SampleCode type="javascript" caption="ほげほｇほえｇほえ">
+        <SampleCode type="javascript" caption="blur.ts">
           <pre>
-            const blurDirective = {
+            import gsap from 'gsap'
+            import ScrollTrigger from "gsap/ScrollTrigger"
+            gsap.registerPlugin(ScrollTrigger)
+
+            export const blurDirective = {
               mounted: function(el: HTMLElement) {
                 gsap.to(
                   el,
@@ -83,7 +86,7 @@ import Three from './components/Three.vue';
                       trigger: el,
                       // markers: true,
                       scrub: true,
-                      start: "bottom 20%",
+                      start: "bottom top+=200",
                       end: "bottom top"
                     }
                   }
@@ -100,15 +103,12 @@ import Three from './components/Three.vue';
                       // markers: true,
                       scrub: true,
                       start: "top bottom",
-                      end: "top bottom-=40%"
+                      end: "top center"
                     }
                   }
                 )
               }
             }
-            const main = createApp(App)
-            main.directive('blur', blurDirective)
-            main.mount('#app')
           </pre>
         </SampleCode>
       </DescriptionCard>
@@ -294,11 +294,11 @@ import Three from './components/Three.vue';
         <h3>スクロールハックするエフェクト</h3>
         <ul>
           <li v-budoux>スクロールを用いてアニメーションを作成できるということは、スクロール対象を固定して横に移動するアニメーションを適用してあげれば、縦スクロールを横スクロールの様に見立てるような見せ方もできる</li>
-          <li v-budoux>以下は、20枚のカードを横に並べたサンプル。縦スクロールに応じて横に移動する(横スクロールしているように見える)</li>
+          <li v-budoux>以下は、10枚のカードを横に並べたサンプル。縦スクロールに応じて横に移動する(横スクロールしているように見える)</li>
         </ul>
       </DescriptionCard>
       <SideScroller>
-        <SampleCard v-for="n in 20">{{n}}</SampleCard>
+        <SampleCard v-for="n in 10">{{n}}</SampleCard>
       </SideScroller>
     </article>
 
