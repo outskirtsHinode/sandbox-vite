@@ -29,8 +29,8 @@ onMounted(() => {
 })
 
 const isMultiple = (() => {
-  if(slots !== undefined) {
-    return slots.default()[0].children.includes('\n');
+  if(slots) {
+    return slots!.default()[0].type === 'pre'
   } else {
     return false
   }
