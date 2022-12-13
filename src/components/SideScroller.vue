@@ -1,41 +1,47 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger)
 
 const sideScroller = ref<HTMLElement|null>(null);
-const overflowWidth = computed(() => {
+const overflowWidth = () => {
   if(sideScroller.value) {
     return sideScroller.value.clientWidth - window.innerWidth
   }else{
     return 0
   }
-})
+}
 
 onMounted(() => {
-  gsap.to(
+  const scrollTween = gsap.to(
     sideScroller.value,
     {
-      x: - overflowWidth.value,
+      x: - overflowWidth(),
       ease: "none",
       scrollTrigger: {
         trigger: sideScroller.value!,
         scrub: true,
         pin: true,
-        start: 'top top',
-        end: () => "+=" + overflowWidth.value,
+        end: "+=" + overflowWidth(),
+        invalidateOnRefresh: true
       }
-    }
+    },
   );
+  ScrollTrigger.addEventListener("refreshInit", () => {
+    if(scrollTween.vars.scrollTrigger) {
+      scrollTween.vars.x = - overflowWidth()
+      scrollTween.vars.scrollTrigger.end = "+=" + overflowWidth()
+    }
+  })
 })
 
 </script>
 
 <template>
-  <section ref="sideScroller" class="side-scroller">
+  <div ref="sideScroller" class="side-scroller">
     <slot></slot>
-  </section>
+  </div>
 </template>
 
 <style scoped lang="scss">
