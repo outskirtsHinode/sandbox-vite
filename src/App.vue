@@ -111,6 +111,14 @@ import Three from './components/Three.vue';
             }
           </pre>
         </SampleCode>
+
+        <SampleCode type="javascript" caption="main.ts">
+          <pre>
+            const main = createApp(App)
+            main.directive('blur', blurDirective)
+            main.mount('#app')
+          </pre>
+        </SampleCode>
       </DescriptionCard>
     </article>
 

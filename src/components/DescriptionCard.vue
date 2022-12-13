@@ -73,5 +73,8 @@ onMounted(() => {
   color: #c1ccd6;
   line-height: 1.5;
   font-size: 1rem;
+  :slotted(> * + *) {
+    margin-top: 1.5em;
+  }
 }
 </style>
