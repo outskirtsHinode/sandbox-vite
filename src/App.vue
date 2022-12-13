@@ -304,7 +304,7 @@ import Three from './components/Three.vue';
         </ul>
       </DescriptionCard>
       <SideScroller>
-        <SampleCard v-for="n in 10">{{n}}</SampleCard>
+        <SampleCard v-for="n in 10" :n="n"></SampleCard>
       </SideScroller>
     </article>
 
