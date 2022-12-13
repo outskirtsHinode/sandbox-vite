@@ -29,10 +29,8 @@ onMounted(() => {
     },
   );
   ScrollTrigger.addEventListener("refreshInit", () => {
-    if(scrollTween.vars.scrollTrigger) {
-      scrollTween.vars.x = - overflowWidth()
-      scrollTween.vars.scrollTrigger.end = "+=" + overflowWidth()
-    }
+    scrollTween.vars.x = - overflowWidth()
+    scrollTween.vars.scrollTrigger = { end: "+=" + overflowWidth() }
   })
 })
 
@@ -47,7 +45,11 @@ onMounted(() => {
 <style scoped lang="scss">
 .side-scroller {
   display: flex;
+  align-items: center;
   width: max-content;
   padding: 2rem;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #fbfdff;
 }
 </style>

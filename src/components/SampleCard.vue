@@ -16,14 +16,11 @@ const props = defineProps({
 <style scoped lang="scss">
 .sample-card {
   display: flex;
-  width: 100vw;
-  height: 100vw;
-  box-shadow: rgba(255,255,255, 0.1) 0px 1px 0px, rgba(255,255,255, 0.1) 0px 8px 24px, rgba(255,255,255, 0.1) 0px 16px 48px;
+  width: 400px;
+  height: 70vh;
   color: white;
-  background: black;
-  margin: 1rem;
-  border-radius: 4px;
-  border: 1px solid rgba(255,255,255, 0.3);
+  margin: 4px;
+  border-radius: 2px;
   box-sizing: border-box;
 }
 img {
