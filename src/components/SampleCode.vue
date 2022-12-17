@@ -42,7 +42,7 @@ onMounted(() => {
 pre {
   max-width: 640px;
   border-radius: 8px;
-  backdrop-filter: blur(24px);
+  backdrop-filter: blur(5px);
   background: rgba(0,0,0,.3);
   border: 1px solid white;
 }

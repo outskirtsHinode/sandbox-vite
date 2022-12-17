@@ -173,6 +173,7 @@ import Three from './components/Three.vue';
             <ul>
               <li>アニメーションを手続き的に実行できる点(timeline)</li>
               <li>スクロールと連動したアニメーションが可能な点(ScrollTrigger)</li>
+              <li>IntersectionObserverの書き方むずいけど、このライブラリを使うと結構直感的にかける点</li>
             </ul>
           </li>
         </ul>
@@ -377,6 +378,7 @@ import Three from './components/Three.vue';
         </template>
         <ul>
           <li>SVGのパスを描画するようなアニメーションを作成した</li>
+          <li>スクロールに応じて後ろでにょろにょろが動いているはず！</li>
           <li>SVGのパスの長さは<SampleCode>SVGGeometryElement.getTotalLength()</SampleCode>で取得することができる！</li>
           <li>
             パスを描画するアニメーションは<SampleCode type="css">stroke-dasharray</SampleCode>と<SampleCode type="css">stroke-dashoffset</SampleCode>を使用することを学んだ！
