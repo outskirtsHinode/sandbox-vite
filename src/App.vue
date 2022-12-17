@@ -183,7 +183,7 @@ import Three from './components/Three.vue';
       </DescriptionCard>
 
       <DescriptionCard>
-        <h3>timelineを用いた最初のアニメーション</h3>
+        <h3 v-budoux>timelineを用いた最初のアニメーション</h3>
         <video src="./assets/first-view.mov" autoplay loop muted playsinline></video>
         <ul>
           <li>gsap.timeline関数を使用した</li>
@@ -199,7 +199,7 @@ import Three from './components/Three.vue';
       </DescriptionCard>
 
       <DescriptionCard start-x="-200">
-        <h3>スライドインさせるアニメーション</h3>
+        <h3 v-budoux>スライドインさせるアニメーション</h3>
         <SampleCode caption="スライドインでのコンポーネント内のgsapアニメーション記述部分">
           <pre>
             const props = defineProps({
@@ -253,7 +253,7 @@ import Three from './components/Three.vue';
         </ul>
       </DescriptionCard>
       <DescriptionCard v-blur>
-        <h3>上端下端でウィンドウに入る時にぼかすアニメーション</h3>
+        <h3 v-budoux>上端下端でウィンドウに入る時にぼかすアニメーション</h3>
         <SampleCode caption="ぼかすエフェクトのディレクティブ内のgsapアニメーション記述部分">
           <pre>
             gsap.to(
@@ -296,7 +296,7 @@ import Three from './components/Three.vue';
       </DescriptionCard>
 
       <DescriptionCard style="mix-blend-mode:exclusion">
-        <h3>背景を埋めるエフェクト</h3>
+        <h3 v-budoux>背景を埋めるエフェクト</h3>
         <SampleCode caption="背景を埋めるエフェクトコンポーネント内のgsapアニメーション記述部分">
           <pre>
             const activator = ref();
@@ -337,7 +337,7 @@ import Three from './components/Three.vue';
       </DescriptionCard>
       <Background />
       <DescriptionCard>
-        <h3>縦スクロールで横スクロールしているようなエフェクト</h3>
+        <h3 v-budoux>縦スクロールで横スクロールしているようなエフェクト</h3>
         <ul>
           <li>スクロールを用いてアニメーションを作成できるということは、スクロール対象を固定して横に移動するアニメーションを適用してあげれば、縦スクロールを横スクロールの様に見立てるような見せ方もできる</li>
           <li>以下は、10枚の画像を横に並べたサンプル。縦スクロールに応じて横に移動する(横スクロールしているように見える)</li>
