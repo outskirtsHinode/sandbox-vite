@@ -7,7 +7,7 @@ import "prismjs/themes/prism-tomorrow.min.css";
 const props = defineProps({
   type: {
     type: String,
-    default: 'css'
+    default: 'javascript'
   },
   caption: {
     type: String,

@@ -20,9 +20,6 @@ import Three from './components/Three.vue';
       <p v-budoux>
         アニメーションまわりとか最近のやりかた試したことなかったので独習してみました！
       </p>
-      <p v-budoux>
-        コテコテになってしまっていますが、練習ということで…！
-      </p>
     </div>
 
     <article>
@@ -31,8 +28,10 @@ import Three from './components/Three.vue';
           Viteを使ってみた
         </template>
         <ul>
-          <li v-budoux>想像以上にかんたんに環境が作れてびっくり！</li>
-          <li v-budoux>ほんとにGetting startedのコマンド3つくらい叩いたらできた</li>
+          <li><a href="https://vitejs.dev/" target="_blank">Vite</a></li>
+          <li>想像以上にかんたんに環境が作れてびっくり！</li>
+          <li>ほんとにGetting startedのコマンド3つくらい叩いたらできた</li>
+          <li>詳しくは調べられてないけど、開発環境がサクサク作れるのはいいなーと感じた！</li>
         </ul>
       </DescriptionCard>
 
@@ -41,10 +40,18 @@ import Three from './components/Three.vue';
           Vue3 Composition API を利用してみた
         </template>
         <ul>
-          <li v-budoux>まだoptionの記法に慣れているので、違和感がある…</li>
-          <li v-budoux>これに慣れてきたらTypeScriptとかのコード読み解きもラクになる予感がするので頑張りたいとこ</li>
+          <li><a href="https://v3.ja.vuejs.org/guide/composition-api-introduction.html#%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%83%95%E3%83%83%E3%82%AF%E3%82%92-setup-%E3%81%AE%E4%B8%AD%E3%81%AB%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8B" target="_blank">Composition API について</a></li>
+          <li>まだOptions記法に慣れているので、違和感がある…</li>
+          <li>
+            Options記法に比べて、以下のような利点があるらしい。
+            <ul>
+              <li>同じ関心事の記述をまとめられる(確かにOptionsだと、 <SampleCode>data</SampleCode>や<SampleCode>computed</SampleCode>、<SampleCode>methods</SampleCode>の記述がコンポーネント内のコードが肥大化するにつれてバラけてしまいがちだった。)</li>
+              <li>TypeScriptとの親和性がある</li>
+            </ul>
+          </li>
+          <li>TypeScriptもちゃんと覚えたいので頑張りたいとこ…</li>
         </ul>
-        <SampleCode type="javascript" caption="とあるコンポーネントの <script setup> タグ内">
+        <SampleCode caption="とあるコンポーネントの <script setup> タグ内">
           <pre>
             import { ref, onMounted } from 'vue'
 
@@ -67,10 +74,26 @@ import Three from './components/Three.vue';
           カスタムディレクティブを作成した
         </template>
         <ul>
-          <li v-budoux>カスタムディレクティブを定義する練習</li>
-          <li v-budoux>scrollのstartとendまわりの定義の仕方、fromTo()とのかけ合わせ方が混乱してしまったが、何とかできた！</li>
+          <li><a href="https://v3.ja.vuejs.org/guide/custom-directive.html#%E5%9F%BA%E6%9C%AC" target="_blank">カスタムディレクティブ について</a></li>
+          <li>ざっくりいうと、要素(element)に好きな機能を持たせた属性(attribute)を定義することができる君</li>
+          <li>
+            今回は<SampleCode>v-blur</SampleCode>ディレクティブと<SampleCode>v-budoux</SampleCode>ディレクティブを作成した！
+            <ul>
+              <li>
+                <SampleCode>v-blur</SampleCode>:
+                ウィンドウに入るときと出る時にぼかしを入れるディレクティブ。
+                後ほど実例が表示されます。
+              </li>
+              <li>
+                <SampleCode>v-budoux</SampleCode>:
+                <a href="https://github.com/google/budoux">budoux</a> が適用され、
+                文章がいい感じの文節で折り返されるようになる
+                (このページの見出しおそらくいい感じのところで折り返してるかと思います！すごい！)
+              </li>
+            </ul>
+          </li>
         </ul>
-        <SampleCode type="javascript" caption="blur.ts">
+        <SampleCode caption="blur.ts">
           <pre>
             import gsap from 'gsap'
             import ScrollTrigger from "gsap/ScrollTrigger"
@@ -111,11 +134,24 @@ import Three from './components/Three.vue';
             }
           </pre>
         </SampleCode>
+        <SampleCode caption="budoux.ts">
+          <pre>
+            import { loadDefaultJapaneseParser } from 'budoux';
+            const parser = loadDefaultJapaneseParser();
 
-        <SampleCode type="javascript" caption="main.ts">
+            export const budouxDirective = {
+              mounted: function(el: HTMLElement) {
+                el.innerHTML = parser.translateHTMLString(el.innerHTML)
+              }
+            }
+          </pre>
+        </SampleCode>
+
+        <SampleCode caption="main.ts">
           <pre>
             const main = createApp(App)
             main.directive('blur', blurDirective)
+            main.directive('budoux', budouxDirective)
             main.mount('#app')
           </pre>
         </SampleCode>
@@ -125,12 +161,14 @@ import Three from './components/Three.vue';
     <article>
       <DescriptionCard>
         <template #heading>
-          gsapを利用してみた
+          GSAPを利用してみた
         </template>
         <ul>
-          <li v-budoux>gsapとそのプラグインScrollTriggerを用いて作成</li>
-          <li v-budoux>scrubでスクロール位置に合わせてアニメーションが動くのだけど、それがめちゃ面白い！</li>
-          <li v-budoux>
+          <li><a href="https://greensock.com/gsap/" target="_blank">GSAP(GreenSock Animation Platform)</a></li>
+          <li>GSAPとそのプラグインScrollTriggerを用いて作成</li>
+          <li>scrubでスクロール位置に合わせてアニメーションが動くのだけど、それがめちゃ面白い！</li>
+          <li>基本的にはCSSのtransitionとanimationをいい感じに扱える様にしてくれるものが多いので、CSS覚えてる人には使いやすいと感じた</li>
+          <li>
             個人的に嬉しいなーとなったポイントは以下。
             <ul>
               <li>アニメーションを手続き的に実行できる点(timeline)</li>
@@ -139,7 +177,7 @@ import Three from './components/Three.vue';
           </li>
         </ul>
         <p>
-          以下に他の活かせそうな例を作成してみた！
+          以下に活かせそうな例を作成してみた！
         </p>
       </DescriptionCard>
 
@@ -147,13 +185,13 @@ import Three from './components/Three.vue';
         <h3>timelineを用いた最初のアニメーション</h3>
         <video src="./assets/first-view.mov" autoplay loop muted playsinline></video>
         <ul>
-          <li v-budoux>gsap.timeline関数を使用した</li>
-          <li v-budoux>このアニメーションの次はこのアニメーション→その次のアニメーション…と手続き的にアニメーションを実行できる</li>
-          <li v-budoux>ボールが跳ねる→文字が一文字ずつ跳ねる→文字が縮小する→(一個前と同時に)背景が透過する</li>
-          <li v-budoux>
+          <li>gsap.timeline関数を使用した</li>
+          <li>このアニメーションの次はこのアニメーション→その次のアニメーション…と手続き的にアニメーションを実行できる</li>
+          <li>ボールが跳ねる→文字が一文字ずつ跳ねる→文字が縮小する→(一個前と同時に)背景が透過する</li>
+          <li>
             staggerというオプションをつけることで、アニメーション対象の要素たちを指定した時間分ずらして順次実行できる
             <ul>
-              <li v-budoux>今回は一文字ずつずれて同じアニメーションが実行されるようにするところに適用している</li>
+              <li>今回は一文字ずつずれて同じアニメーションが実行されるようにするところに適用している</li>
             </ul>
           </li>
         </ul>
@@ -161,7 +199,7 @@ import Three from './components/Three.vue';
 
       <DescriptionCard start-x="-200">
         <h3>スライドインさせるアニメーション</h3>
-        <SampleCode type="javascript" caption="スライドインでのコンポーネント内のgsapアニメーション記述部分">
+        <SampleCode caption="スライドインでのコンポーネント内のgsapアニメーション記述部分">
           <pre>
             const props = defineProps({
               startX: {
@@ -203,19 +241,19 @@ import Three from './components/Three.vue';
           </pre>
         </SampleCode>
         <ul>
-          <li v-budoux>スクロールの際、特定要素がウィンドウの特定位置に来ることをトリガーとしてスライドインする</li>
-          <li v-budoux>
-            今回はコンポーネントのpropsとして定義した
+          <li>スクロールの際、特定要素がウィンドウの特定位置に来ることをトリガーとしてスライドインする</li>
+          <li>
+            今回はCompositionAPIの練習も兼ねて、defineProps用いてコンポーネントのpropsとして定義した
             <ul>
-              <li><SampleCode type="javascript">startX</SampleCode>もしくは<SampleCode type="javascript">startY</SampleCode>の独自propsを指定するとその位置からスライドしているように見える</li>
-              <li>このカードは <SampleCode type="javascript">start-x="-200"</SampleCode>を指定している</li>
+              <li><SampleCode>startX</SampleCode>もしくは<SampleCode>startY</SampleCode>の独自propsを指定するとその位置からスライドしているように見える</li>
+              <li>このカードは <SampleCode>start-x="-200"</SampleCode>を指定している</li>
             </ul>
           </li>
         </ul>
       </DescriptionCard>
       <DescriptionCard v-blur>
         <h3>上端下端でウィンドウに入る時にぼかすアニメーション</h3>
-        <SampleCode type="javascript" caption="ぼかすエフェクトのディレクティブ内のgsapアニメーション記述部分">
+        <SampleCode caption="ぼかすエフェクトのディレクティブ内のgsapアニメーション記述部分">
           <pre>
             gsap.to(
               el,
@@ -249,16 +287,16 @@ import Three from './components/Three.vue';
           </pre>
         </SampleCode>
         <ul>
-          <li v-budoux>スクロールの際、特定要素がウィンドウの特定位置に来ることをトリガーとしてぼかしを入れる</li>
-          <li v-budoux><SampleCode type="javascript">scrub: true;</SampleCode>とすることで、スクロール位置とアニメーションの進行量をあわせることができる(おもしろいいいい)</li>
-          <li v-budoux>このセクションをウィンドウの上端下端に持ってくと挙動が確認できる</li>
-          <li v-budoux>今回はVue.jsの練習も兼ねてカスタムディレクティブとしてblurディレクティブを定義した(詳細は後述)</li>
+          <li>スクロールの際、特定要素がウィンドウの特定位置に来ることをトリガーとしてぼかしを入れる</li>
+          <li><SampleCode>scrub: true;</SampleCode>とすることで、スクロール位置とアニメーションの進行量をあわせることができる(おもしろいいいい)</li>
+          <li>このセクションをウィンドウの上端下端に持ってくと挙動が確認できる</li>
+          <li>今回はVue.jsの練習も兼ねてカスタムディレクティブとして前述したblurディレクティブを定義した</li>
         </ul>
       </DescriptionCard>
 
       <DescriptionCard style="mix-blend-mode:exclusion">
         <h3>背景を埋めるエフェクト</h3>
-        <SampleCode type="javascript" caption="背景を埋めるエフェクトコンポーネント内のgsapアニメーション記述部分">
+        <SampleCode caption="背景を埋めるエフェクトコンポーネント内のgsapアニメーション記述部分">
           <pre>
             const activator = ref();
             const expandBall = ref();
@@ -291,16 +329,17 @@ import Three from './components/Three.vue';
           </pre>
         </SampleCode>
         <ul>
-          <li v-budoux>スクロールの際、アニメーションさせる要素とトリガーさせる要素を別にすることができる</li>
-          <li v-budoux>今回は、このセクションがウィンドウに入ったら、背景の<SampleCode>.expandBall</SampleCode>を広げるエフェクトを作成してみた</li>
+          <li>スクロールの際、アニメーションさせる要素とトリガーさせる要素を別にすることができる</li>
+          <li>今回は、このセクションがウィンドウに入ったら、背景の<SampleCode>.expandBall</SampleCode>を広げるエフェクトを作成してみた</li>
+          <li>おまけで、<SampleCode type="css">mix-blend-mode</SampleCode>をちゃんと使用したことなかったので使用してみた（背景白になってもちゃんと読めるように文字色が変わってるはず！）</li>
         </ul>
       </DescriptionCard>
       <Background />
       <DescriptionCard>
-        <h3>スクロールハックするエフェクト</h3>
+        <h3>縦スクロールで横スクロールしているようなエフェクト</h3>
         <ul>
-          <li v-budoux>スクロールを用いてアニメーションを作成できるということは、スクロール対象を固定して横に移動するアニメーションを適用してあげれば、縦スクロールを横スクロールの様に見立てるような見せ方もできる</li>
-          <li v-budoux>以下は、10枚のカードを横に並べたサンプル。縦スクロールに応じて横に移動する(横スクロールしているように見える)</li>
+          <li>スクロールを用いてアニメーションを作成できるということは、スクロール対象を固定して横に移動するアニメーションを適用してあげれば、縦スクロールを横スクロールの様に見立てるような見せ方もできる</li>
+          <li>以下は、10枚の画像を横に並べたサンプル。縦スクロールに応じて横に移動する(横スクロールしているように見える)</li>
         </ul>
       </DescriptionCard>
       <SideScroller>
@@ -314,10 +353,13 @@ import Three from './components/Three.vue';
           Three.jsを使って背景を作成した
         </template>
         <ul>
-          <li v-budoux>シェーダーをどうしても自分で作成してみたくて、色々思考錯誤した</li>
-          <li v-budoux>本当はWebGL直接いじる感じでやろうと思ってたけど、カスタムシェーダーの勉強のために他の箇所はThree.jsにおまかせした感じになった。</li>
-          <li v-budoux>GLSLまじでむずいけど、覚えたら絶対楽しいのがわかった</li>
-          <li v-budoux>行列とベクトルをちゃんと勉強したい気持ちになりまくっている…！！！</li>
+          <li><a href="https://threejs.org/" target="_blank">Three.js</a></li>
+          <li>javascriptで3dをいじれるライブラリ。WebGLを組み合わせられるので、GPU処理できちゃう！</li>
+          <li>本当はWebGL直接いじる感じでやろうと思ってたけど、カスタムシェーダーの勉強のために他の箇所はThree.jsにおまかせした感じになった。。</li>
+          <li>シェーダーをどうしても自分で作成してみたくて、色々思考錯誤した</li>
+          <li>GLSLまじでむずいけど、覚えたら絶対楽しいのがわかった</li>
+          <li>行列とベクトルをちゃんと勉強したい気持ちになりまくっている…！！！</li>
+          <li>今回は背景の白い点が、スクロールに応じて回転するようなものを作成した</li>
         </ul>
       </DescriptionCard>
     </article>

@@ -46,7 +46,7 @@ onMounted(() => {
 
 <template>
   <div class="card" ref="card">
-    <h2 class="card__heading" ref="heading">
+    <h2 class="card__heading" ref="heading" v-budoux>
       <slot name="heading"></slot>
     </h2>
     <div class="card__text">
