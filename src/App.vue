@@ -454,6 +454,7 @@ import Three from './components/Three.vue';
 main {
   max-width: 100vw;
   overflow: hidden;
+  margin-bottom: 20rem;
 }
 .lead {
   text-align: center;
