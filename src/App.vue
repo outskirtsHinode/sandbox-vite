@@ -2,7 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import FirstView from './components/FirstView.vue'
-import SvgAnim from './components/SvgAnim.vue'
+import SvgAnimation from './components/SvgAnimation.vue'
 import Background from './components/Background.vue'
 import SampleCode from './components/SampleCode.vue'
 import SampleCard from './components/SampleCard.vue'
@@ -18,7 +18,7 @@ import Three from './components/Three.vue';
     <FirstView />
     <div class="lead">
       <p v-budoux>
-        アニメーションまわりとか最近のやりかた試したことなかったので独習してみました！
+        アニメーションまわりとか最近のやりかた試したことなかったので色々いじったり試したりしてみました！
       </p>
     </div>
 
@@ -49,7 +49,7 @@ import Three from './components/Three.vue';
               <li>TypeScriptとの親和性がある</li>
             </ul>
           </li>
-          <li>TypeScriptもちゃんと覚えたいので頑張りたいとこ…</li>
+          <li>TypeScriptもちゃんと覚えたいので頑張りたいとこ…！</li>
         </ul>
         <SampleCode caption="とあるコンポーネントの <script setup> タグ内">
           <pre>
@@ -359,12 +359,92 @@ import Three from './components/Three.vue';
           <li>シェーダーをどうしても自分で作成してみたくて、色々思考錯誤した</li>
           <li>GLSLまじでむずいけど、覚えたら絶対楽しいのがわかった</li>
           <li>行列とベクトルをちゃんと勉強したい気持ちになりまくっている…！！！</li>
-          <li>今回は背景の白い点が、スクロールに応じて回転するようなものを作成した</li>
+          <li>
+            今回は白い点が、スクロールに応じて回転するようなものを作成して背景に設置した！
+            <ul>
+              <li>BufferGeometryを動的に作成してそれをシェーダーに渡してこねこねする箇所でだいぶ苦労した。。うまく動かん！なんでええええの連続</li>
+            </ul>
+          </li>
         </ul>
       </DescriptionCard>
     </article>
 
-    <SvgAnim />
+    <article>
+      <SvgAnimation />
+      <DescriptionCard>
+        <template #heading>
+          SVGのアニメーションを作成した
+        </template>
+        <ul>
+          <li>SVGのパスを描画するようなアニメーションを作成した</li>
+          <li>SVGのパスの長さは<SampleCode>SVGGeometryElement.getTotalLength()</SampleCode>で取得することができる！</li>
+          <li>
+            パスを描画するアニメーションは<SampleCode type="css">stroke-dasharray</SampleCode>と<SampleCode type="css">stroke-dashoffset</SampleCode>を使用することを学んだ！
+            <ul>
+              <li><SampleCode type="css">stroke-dasharray</SampleCode>: 破線や間隔のある線のパターン</li>
+              <li><SampleCode type="css">stroke-dashoffset</SampleCode>: 破線を描く際のオフセット値(何ピクセルずらしてスタートするか)</li>
+            </ul>
+            <ol>
+              <li><SampleCode type="css">stroke-dasharray</SampleCode>で破線の長さ=パスの長さとする</li>
+              <li><SampleCode type="css">stroke-dashoffset</SampleCode>で、パスの長さ分ずらすことで、なにも描かれていない状態を作り出す</li>
+              <li>CSSなりGSAPで<SampleCode type="css">stroke-dashoffset</SampleCode>を0に近づけて行くことで、徐々にパスが描かれるように見える</li>
+            </ol>
+          </li>
+        </ul>
+        <SampleCode>
+          <pre>
+            const svgPath = targetLine.value as SVGGeometryElement
+            const svgPathLength = Math.floor(svgPath.getTotalLength())
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: svgPath,
+                // markers: true,
+                scrub: true,
+                start: "top+=100 top",
+                end: "bottom bottom"
+              }
+            });
+            tl.set(
+              svgPath,
+              {
+                'stroke-width': '100px'
+              }
+            ).fromTo(
+              svgPath,
+              {
+                'stroke-dasharray': svgPathLength,
+                'stroke-dashoffset': svgPathLength,
+              },
+              {
+                'stroke-dashoffset': '0'
+              }
+            );
+          </pre>
+        </SampleCode>
+      </DescriptionCard>
+    </article>
+
+    <article>
+      <DescriptionCard>
+        <template #heading>
+          まとめ
+        </template>
+        <ul>
+          <li><strong>Vite</strong>: かんたん早い！</li>
+          <li><strong>Vue 3 Composition API</strong>: 覚えたい！TypeScriptも合わせて学ぶぞ！という気持ち</li>
+          <li><strong>GSAP</strong>: おもしろい！実務で使えるタイミング出てきたらいいなあ…！</li>
+          <li><strong>Three.js</strong>: 奥が深い！シェーダーいじれたらホントに楽しそう！</li>
+          <li><strong>SVG</strong>: パス描画ってこうやってやるんだ！</li>
+        </ul>
+        <p>
+          色々ごった煮で気が向いた時にいじってみてたけど、まだまだ知らないこといっぱいだなああああとなりました。。これからも楽しみつつ学んで行く感じで行きたい気持ちです！
+        </p>
+        <p>
+          このページは、<a href="https://adventar.org/calendars/7720" target="_blank">GMOペパボデザイナー Advent Calendar 2022</a>の19日目の投稿でした！
+          他の方の投稿も面白いのでぜひぜひ見てみてください！！！
+        </p>
+      </DescriptionCard>
+    </article>
   </main>
 </template>
 
