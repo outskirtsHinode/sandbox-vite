@@ -58,5 +58,6 @@ onMounted(() => {
   max-width: 640px;
   z-index: -1;
   opacity: 0.3;
+  transform: translateY(-220px);
 }
 </style>
