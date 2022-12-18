@@ -442,8 +442,8 @@ import Three from './components/Three.vue';
           色々ごった煮で気が向いた時にいじってみてたけど、まだまだ知らないこといっぱいだなああああとなりました。。これからも楽しみつつ学んで行く感じで行きたい気持ちです！
         </p>
         <p>
-          このページは、<a href="https://adventar.org/calendars/7720" target="_blank">GMOペパボデザイナー Advent Calendar 2022</a>の19日目の投稿でした！
-          他の方の投稿も面白いのでぜひぜひ見てみてください！！！
+          このページは、<a href="https://adventar.org/calendars/7720" target="_blank">GMOペパボデザイナー Advent Calendar 2022</a>の19日目の投稿記事でした！
+          次はminneのおうゆか！わいわい！！
         </p>
       </DescriptionCard>
     </article>
