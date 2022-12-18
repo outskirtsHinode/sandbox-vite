@@ -38,7 +38,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="line-wrapper">
     <svg preserveAspectRatio="xMidYMin meet" class="line" viewBox="0 0 942 3187" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path ref="targetLine" d="M358.612 51C230.278 77 2.51186 231 118.112 639C262.612 1149 154.112 1269.5 70.1118 1521.5C-13.8882 1773.5 192.029 1959.5 345 1959.5C518.388 1959.5 687.753 1770.39 832.612 1937C979.112 2105.5 746.5 2233 784 2446.5C822.531 2665.87 958.612 2662 850.612 3136" stroke="#D7D7D7" stroke-width="100" stroke-linecap="round"/>
     </svg>
@@ -46,11 +46,16 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+.line-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .line {
-  aspect-ratio: 942/3187;
   position: absolute;
   margin: 20px;
   width: calc(100vw - 40px);
+  max-width: 640px;
   z-index: -1;
   opacity: 0.3;
 }

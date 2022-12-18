@@ -58,7 +58,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .card {
   padding: 2em;
-  max-width: 640px;
+  max-width: 960px;
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
